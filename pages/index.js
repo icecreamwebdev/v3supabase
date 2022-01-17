@@ -12,7 +12,7 @@ export default function Home({events}) {
 
             return (
               <div key={event.id}>
-                <p>{event.Eventor[0].title} vs {event.Eventor[1].title}</p>
+                <p>{event.Eventor[0].title} vs {event.Eventor[0].title}</p>
                 <p>test</p>
               </div>
             )
