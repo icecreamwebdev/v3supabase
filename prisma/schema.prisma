@@ -1,0 +1,88 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Ch {
+  chID        Int      @id @default(autoincrement())
+  title       String   @unique
+  region      Region   @default(us)
+  affLink     String?
+  imgUrl      String
+  description String?
+  eventorEID  Int?
+  eventEID    Int?
+  Event       Event?   @relation(fields: [eventEID], references: [eID])
+  Eventor     Eventor? @relation(fields: [eventorEID], references: [eID])
+}
+
+model Event {
+  eID        Int       @id @default(autoincrement())
+  Eventor    Eventor[]
+  type       String
+  Ch         Ch[]
+  ImgUrl     String?
+  sTime      DateTime
+  eTime      DateTime
+  isFeatured Boolean
+  League     League?   @relation(fields: [leagueLID], references: [lID])
+  Sport      Sport?    @relation(fields: [sportSID], references: [sID])
+  sportSID   Int?
+  leagueLID  Int?
+
+
+  
+}
+
+model Eventor {
+  eID       Int       @id @default(autoincrement())
+  title     String
+  type      sportType
+  slug      String
+  country   String
+  imgUrl    String?
+  sportSID  Int?
+  leagueLID Int?
+  eventEID  Int?
+  Event     Event?    @relation(fields: [eventEID], references: [eID])
+  League    League?   @relation(fields: [leagueLID], references: [lID])
+  Sport     Sport?    @relation(fields: [sportSID], references: [sID])
+  Ch        Ch[]
+}
+
+model League {
+  lID         Int       @id @default(autoincrement())
+  title       String    @unique
+  description String?
+  imgUrl      String?
+  sportSID    Int?
+  Sport       Sport?    @relation(fields: [sportSID], references: [sID])
+  Event       Event[]
+  Eventor     Eventor[]
+}
+
+model Sport {
+  sID         Int       @id @default(autoincrement())
+  title       String    @unique
+  description String?
+  type        sportType @default(team)
+  ImgUrl      String?
+  Event       Event[]
+  Eventor     Eventor[]
+  League      League[]
+}
+
+enum Region {
+  us
+  uk
+  aus
+}
+
+enum sportType {
+  team
+  individual
+}
