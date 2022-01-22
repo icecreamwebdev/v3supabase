@@ -35,7 +35,7 @@ model Event {
   leagueLID  Int?
 
 
-  
+
 }
 
 model Eventor {
@@ -48,7 +48,7 @@ model Eventor {
   sportSID  Int?
   leagueLID Int?
   eventEID  Int?
-  Event     Event?    @relation(fields: [eventEID], references: [eID])
+  Event     Event[]   @relation(fields: [eventEID], references: [eID])
   League    League?   @relation(fields: [leagueLID], references: [lID])
   Sport     Sport?    @relation(fields: [sportSID], references: [sID])
   Ch        Ch[]
