@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import prisma from "../lib/prisma"
-import MainSports from '../components/mainSports'
+import MainSports from '../components/MainSports'
 import DaySelector from '../components/DaySelector'
 
 export default function Home({events}) {
