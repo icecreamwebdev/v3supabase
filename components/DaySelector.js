@@ -20,7 +20,7 @@ const DaySelector = () => {
     }
 
     return (
-        <div className='flex w-full bg-gray-200 h-20 shadow-md justify-around items-center text-gray-900 text-sm'>
+        <div className='flex w-full bg-gray-200 h-20 shadow-lg justify-around items-center text-gray-900 text-sm  '>
             {nextDays.map((day, index) => {
 
                 return <Day key={index} day={day.day} date={day.date} index={index} activeDay={activeDay} handleFunction={dayToggle}/>

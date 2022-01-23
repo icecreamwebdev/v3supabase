@@ -1,7 +1,7 @@
 import React from 'react';
 import MainSportLi from './MainSportLi';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faFootballBall, faFutbol, faBasketballBall, faGolfBall, faMitten, faBaseballBall, faStar } from '@fortawesome/free-solid-svg-icons'
+import { faFootballBall, faFutbol, faBasketballBall, faGolfBall, faMitten, faBaseballBall } from '@fortawesome/free-solid-svg-icons'
 import Image from 'next/image';
 
 
@@ -25,8 +25,8 @@ const MainSports = () => {
     
 
     return (
-        <div className='flex-col flex-nowrap bg-gray-200 shrink-0 p-5 px-7 rounded shadow-md'>
-            <h2 className='m-2 font-semibold'>Popular Sports</h2>
+        <div className='flex-col flex-nowrap bg-gray-200 shrink-0 p-5 px-6 rounded shadow-md'>
+            <h2 className='m-2 font-semibold uppercase'>Popular Sports</h2>
             <ul className='m-2 text-gray-600'>
                 <MainSportLi icon={soccerIcon} name='Football'/>
                 <MainSportLi icon={golfIcon} name='Golf'/>
