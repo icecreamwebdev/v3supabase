@@ -19,10 +19,12 @@ const DaySelector = () => {
     const [startDate, setStartDate] = useState(new Date());
     const DateButton = forwardRef(({ value, onClick }, ref) => (
         
-      <button className="example-custom-input" onClick={onClick} ref={ref}>
+      <button className="date-button" onClick={onClick} ref={ref}>
         {calendarIcon}
       </button>
     ));
+
+    DateButton.displayName = "Search";
 
 
  
