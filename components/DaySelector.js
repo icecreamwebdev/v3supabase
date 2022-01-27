@@ -17,12 +17,13 @@ const DaySelector = () => {
     const calendarIcon = <FontAwesomeIcon icon={faCalendarAlt} size="2x" color="#334155" />
     const [calanderOpen, setCalandarOpen] = useState(false)
     const [startDate, setStartDate] = useState(new Date());
-    const ExampleCustomInput = forwardRef(({ value, onClick }, ref) => (
+    const DateButton = forwardRef(({ value, onClick }, ref) => (
         
       <button className="example-custom-input" onClick={onClick} ref={ref}>
         {calendarIcon}
       </button>
     ));
+
 
  
     const dayToggle = (day) => {
@@ -41,7 +42,6 @@ const DaySelector = () => {
      }
 
      const handleCalendarClose = () => {
-         console.log('calandar has been closed')
          setCalandarOpen(false)
      }
 
@@ -70,7 +70,7 @@ const DaySelector = () => {
                 closeOnScroll={true}
                 selected={startDate}
                 onChange={(date) => dateHandler(date)}
-                customInput={<ExampleCustomInput />}
+                customInput={<DateButton />}
                 openToDate={startDate}
                 minDate={new Date()}
                 open={calanderOpen}
