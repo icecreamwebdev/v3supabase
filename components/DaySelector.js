@@ -1,24 +1,59 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCalendarAlt } from '@fortawesome/free-regular-svg-icons'
 import Day from '../components/Day'
 import Router from 'next/router';
+import ReactDatePicker from 'react-datepicker';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { forwardRef } from 'react';
 
 const DaySelector = () => {
 
+   
     const nextDays = [{day: 'Today', date: '19 JAN'},{day: 'Fri', date: '20 JAN'},{day: 'Sat', date: '22 JAN'},{day: 'Sun', date: '23 JAN'},{day: 'mon', date: '24 JAN'},{day: 'tues', date: '25 JAN'},{day: 'wed', date: '26 JAN'}]
     const [activeDay, setActiveDay] = useState(0)
 
     const calendarIcon = <FontAwesomeIcon icon={faCalendarAlt} size="2x" color="#334155" />
+    const [calanderOpen, setCalandarOpen] = useState(false)
+    const [startDate, setStartDate] = useState(new Date());
+    const ExampleCustomInput = forwardRef(({ value, onClick }, ref) => (
+        
+      <button className="example-custom-input" onClick={onClick} ref={ref}>
+        {calendarIcon}
+      </button>
+    ));
 
+ 
     const dayToggle = (day) => {
 
         
+        Router.push(`/#${day}`, { shallow: true })
         setActiveDay(day);
-        Router.push(`/#${day}`)
         console.log('it worked', day)
     }
 
+     const toggleCalandar = () =>{
+     
+        if (calanderOpen){
+        setCalandarOpen(() => false)
+        }
+     }
+
+     const handleCalendarClose = () => {
+         console.log('calandar has been closed')
+         setCalandarOpen(false)
+     }
+
+     const handleCalendarOpen = () => {
+        setCalandarOpen(true)
+    }
+ 
+    const dateHandler = (date) => {
+        Router.push(`/#${date}`)
+    }
+    
+   
     return (
         <div className='flex w-full bg-gray-200 h-20 shadow-lg justify-around items-center text-gray-900 text-sm  '>
             {nextDays.map((day, index) => {
@@ -26,8 +61,26 @@ const DaySelector = () => {
                 return <Day key={index} day={day.day} date={day.date} index={index} activeDay={activeDay} handleFunction={dayToggle}/>
 
             })}
-            <button className='flex-col'><div className='flex justify-center'>{calendarIcon}</div></button>
+            {/* <button className='flex-col shrink-0 sticky' ><div className='flex justify-center'>{calendarIcon}</div></button> */}
+           <div className='flex'>
+            <DatePicker
+                onCalendarClose={handleCalendarClose}
+                onCalendarOpen={handleCalendarOpen}
+                onInputClick={() => toggleCalandar()}
+                closeOnScroll={true}
+                selected={startDate}
+                onChange={(date) => dateHandler(date)}
+                customInput={<ExampleCustomInput />}
+                openToDate={startDate}
+                minDate={new Date()}
+                open={calanderOpen}
+    //   maxDate={addMonths()}
+                
+    />
+    </div>
         </div>
+
+         
 
     );
 };

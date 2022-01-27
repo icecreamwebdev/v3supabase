@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFootballBall, faFutbol, faBasketballBall, faGolfBall, faMitten, faBaseballBall } from '@fortawesome/free-solid-svg-icons'
 import Image from 'next/image';
 import Live from './Live';
+import sportIcon from './sportIcon';
 
 
 const Event = ({event}) => {
@@ -30,12 +31,12 @@ const Event = ({event}) => {
     return (
         <div>
         <div className='flex w-full z-1 flex-row items-center  py-5 border-b '>
-            <div className='basis-16  px-1 flex shrink-0 justify-center  '>{footballIcon}</div>
+            <div className='basis-16  px-1 flex shrink-0 justify-center  '>{sportIcon('football')}</div>
             <div className='basis-32  px-1 flex  shrink-0 justify-center  items-center'><Live /></div>
-            <div className='basis-72  flex-grow px1 flex  items-center justify-center  pl-3 '><div className='flex justify-center items-start flex-col flex-wrap'><div className='flex'><span className='mr-2 align-middle items-center pb-3 flex'>{manchesterUnitedIcon}</span> Manchester United </div> <div className='flex'><span className='mr-2 align-middle items-center flex'>{rangersFCIcon}</span>Rangers F.C
+            <div className='basis-80  flex-grow px1 flex  items-left justify-left pl-6 '><div className='flex justify-center items-start flex-col flex-wrap'><div className='flex'><span className='mr-2 align-middle items-center pb-3 flex'>{manchesterUnitedIcon}</span> Manchester United United</div> <div className='flex'><span className='mr-2 align-middle items-center flex'>{rangersFCIcon}</span>Rangers F.C
 
 </div></div></div>
-            <div className='basis-72  px-1 flex  justify-center  '><span className='mr-2 align-middle items-center flex'>{premierLeagueIcon}</span>Premier League</div>
+            <div className='basis-64  px-1 flex  justify-center  '><span className='mr-2 align-middle items-center flex'>{premierLeagueIcon}</span>Premier League</div>
             <div className='basis-80 shrink-0 px-1 flex justify-center items-center '><ul className='flex flex-wrap justify-center'><li className='m-1 relative w-32 h-[18px]'>{btSport1}</li> <li className='m-1 relative w-32 h-[18px]'>{premierSports1}</li></ul></div>
         </div>
 

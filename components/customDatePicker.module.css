@@ -1,0 +1,13 @@
+@import "react-datepicker/dist/react-datepicker.css";
+
+.react-datepicker {
+    font-family: arial, sans-serif;
+    font-size: 0.8rem;
+    background-color: greenyellow !important;
+    color: grey;
+    border:0px solid #aeaeae !important;
+    border-radius: 0.5rem !important;
+    display: inline-block;
+    position: relative;
+  }
+  

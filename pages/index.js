@@ -9,7 +9,7 @@ import Event from '../components/Event'
 export default function Home({events}) {
   return (
     <>
-        <div className='flex w-full rounded m-10 bg-white-100 mt-14 max-w-screen-2xl shadow-md border'	>
+        <div className='flex w-full rounded m-10 bg-white-100 mt-14 max-w-2xl shadow-md border'	>
           <MainSports />
           <div className='flex-col w-full'>
             <DaySelector />
