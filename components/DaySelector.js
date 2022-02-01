@@ -10,7 +10,30 @@ import { forwardRef } from 'react';
 
 const DaySelector = () => {
 
-   
+    const [windowSize, setWindowSize] = useState(undefined)
+
+    useEffect(() => {
+    
+      if (typeof window !== 'undefined'){
+        function handleResize() {
+    
+          setWindowSize(window.innerWidth)
+    
+        }
+    
+        window.addEventListener('resize', handleResize)
+    
+        handleResize()
+    
+        return () => window.removeEventListener('resize', handleResize)
+      }
+    
+    
+    
+    }, [])
+    
+    console.log(windowSize)
+
     const nextDays = [{day: 'Today', date: '19 JAN'},{day: 'Fri', date: '20 JAN'},{day: 'Sat', date: '22 JAN'},{day: 'Sun', date: '23 JAN'},{day: 'mon', date: '24 JAN'},{day: 'tues', date: '25 JAN'},{day: 'wed', date: '26 JAN'}]
     const [activeDay, setActiveDay] = useState(0)
 
@@ -76,6 +99,18 @@ const DaySelector = () => {
                 openToDate={startDate}
                 minDate={new Date()}
                 open={calanderOpen}
+                popperPlacement="bottom-start"
+    popperModifiers={{
+        flip: {
+            behavior: ["bottom-start"] // don't allow it to flip to be above
+        },
+        preventOverflow: {
+            enabled: false // tell it not to try to stay within the view (this prevents the popper from covering the element you clicked)
+        },
+        hide: {
+            enabled: false // turn off since needs preventOverflow to be enabled
+        }
+    }}
     //   maxDate={addMonths()}
                 
     />

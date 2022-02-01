@@ -5,8 +5,12 @@ import MainSports from '../components/MainSports'
 import DaySelector from '../components/DaySelector'
 import MainFilter from '../components/MainFilter'
 import Event from '../components/Event'
+import { useState , useEffect} from 'react'
 
 export default function Home({events}) {
+
+
+
   return (
     <>
         <div className='flex w-full rounded m-10 bg-white-100 mt-14 max-w-2xl shadow-md border'	>
@@ -38,6 +42,8 @@ export default function Home({events}) {
 }
 
 export async function getStaticProps(){
+
+  console.log('fetchinggg')
 
   const data = await prisma.event.findMany({
     include: {
